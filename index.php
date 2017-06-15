@@ -6,18 +6,12 @@
  * Time: 13:37
  */
 
-function getInput( $attribute ) {
-    $result = ( isset( $_GET[$attribute] ) )
-        ? $_GET[$attribute]
-        : null;
-
-    return $result;
-}
-
 $controller = getInput('controller');
 $action = getInput('action');
 
-$allSet = ( ! is_null( $controller ) ) && ( ! is_null( $action ) );
+$allSet =
+    ( ! is_null( $controller ) )
+    && ( ! is_null( $action ) );
 
 if( ! $allSet ) {
     $controller = 'SiteController';
@@ -27,10 +21,16 @@ if( ! $allSet ) {
 $c = new $controller();
 $c->{$action}();
 
-class SiteController
-{
-    public function index()
-    {
-        echo 11;
-    }
+
+function getInput( $attribute ) {
+    $result = ( isset( $_GET[$attribute] ) )
+        ? $_GET[$attribute]
+        : null;
+
+    return $result;
+}
+
+function __autoload( $className ) {
+    $fileName = "Controller/" . $className . ".php";
+    include_once( $fileName );
 }

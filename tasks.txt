@@ -1,5 +1,5 @@
 -----------------Currently doing:-----
-MVC, routing
+MVC, routing 14:20 - 15:00
 
 -----------------To do:---------------
 Understand, how to make a good directory structure
