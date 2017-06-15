@@ -1,8 +1,39 @@
 -----------------Currently doing:-----
+MVC, routing
 
 -----------------To do:---------------
-Understand entities
-MVC, routing
+Understand, how to make a good directory structure
 
 
 -----------------Done:----------------
+
+Understand entities 13:30 - 14:20
+
+* a book
+- id
+- title (unique)
+- author
+- language
+-> has many pages
+-> has many chapters
+
+* a chapter
+- id
+- book_id
+-> has one page
+-> has one book
+
+* a page
+- id
+- content
+- book_id
+- chapter_id
+-> has one book
+-> has one chapter
+
+
+Understanding site pages structure
+
+* List of books
+* List of chapters of a book
+* List of pages
