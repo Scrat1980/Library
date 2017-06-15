@@ -1,0 +1,8 @@
+-----------------Currently doing:-----
+
+-----------------To do:---------------
+Understand entities
+MVC, routing
+
+
+-----------------Done:----------------
