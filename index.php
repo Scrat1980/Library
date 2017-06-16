@@ -18,6 +18,8 @@ if( ! $allSet ) {
     $action = 'index';
 }
 
+spl_autoload_register( 'myAutoloader' );
+
 $c = new $controller();
 $c->{$action}();
 
@@ -30,7 +32,13 @@ function getInput( $attribute ) {
     return $result;
 }
 
-function __autoload( $className ) {
-    $fileName = "Controller/" . $className . ".php";
-    include_once( $fileName );
+function myAutoloader( $className ) {
+    $directories = ['controllers', 'models', 'views'];
+
+    foreach ($directories as $directory) {
+        $fileName = $directory . "/" . $className . ".php";
+        if( file_exists( $fileName ) ) {
+            include_once( $fileName );
+        }
+    }
 }

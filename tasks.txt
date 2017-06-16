@@ -1,13 +1,16 @@
 -----------------Currently doing:-----
-MVC, routing 14:20 - 15:00
+Make two views: Russian and English 13:30 - 
+
 
 -----------------To do:---------------
-Understand, how to make a good directory structure
 
 
 -----------------Done:----------------
 
-Understand entities 13:30 - 14:20
+MVC, routing 30 min
+Understand, how to make a good directory structure 30 min
+
+Understand entities 1 h
 
 * a book
 - id
