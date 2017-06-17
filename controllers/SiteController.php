@@ -18,4 +18,9 @@ class SiteController
         $view = new BooksListView();
         $view->render( $params );
     }
+
+    public function chapters()
+    {
+        
+    }
 }

@@ -8,30 +8,12 @@
  */
 class Book
 {
-    private $db;
-    
-    public function __construct()
-    {
-        $this->db = new Db();
-    }
-
     public function getBooksList()
     {
-
+        $dbHandler = new Db();
         $query = "SELECT title FROM book";
+        $list = $dbHandler->makeQuery( $query );
 
-        try {
-            $statementHandler = $this->db
-                ->getHandler()
-                ->prepare( $query );
-            $statementHandler->execute();
-            $list = $statementHandler->fetch( PDO::FETCH_ASSOC );
-        } catch( PDOException $e ) {
-            echo $query . '<br>' . $e->getMessage();
-        }
-
-        $this->db = null;
-        
         return $list;
     }
 }

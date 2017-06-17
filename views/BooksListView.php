@@ -11,10 +11,10 @@ class BooksListView
 {
     public function render( $params = null )
     {
-        echo "Список книг:" . '<br>';
+        echo "Список книг:" . '<br>' . '<br>';
 
         foreach ( $params['books'] as $bookName ) {
-            var_dump( $bookName );
+            echo '<a href="">' . $bookName['title'] . '</a>';
             echo '<br>';
         }
     }

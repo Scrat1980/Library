@@ -24,6 +24,8 @@ $c = new $controller();
 $c->{$action}();
 
 
+
+
 function getInput( $attribute ) {
     $result = ( isset( $_GET[$attribute] ) )
         ? $_GET[$attribute]

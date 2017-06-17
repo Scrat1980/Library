@@ -1,11 +1,12 @@
 -----------------Currently doing:-----
 Make two views: Russian and English 30 min
-Create tables 12:00 -
 
 -----------------To do:---------------
 
 
 -----------------Done:----------------
+
+Create tables 2 h
 
 MVC, routing 30 min
 Understand, how to make a good directory structure 30 min

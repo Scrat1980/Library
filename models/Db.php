@@ -12,9 +12,10 @@ class Db
     private $userName = 'root';
     private $password = '1';
     private $dbName = 'library';
+    private $handler;
 
 
-    public function getHandler()
+    public function __construct()
     {
         try {
             $dbHandler = new PDO(
@@ -27,9 +28,23 @@ class Db
             echo $e->getMessage();
         }
 
-        return $dbHandler;
+        $this->handler = $dbHandler;
     }
-    
-    
+
+    public function makeQuery( $sql )
+    {
+        try {
+            $statementHandler = $this->handler
+                ->prepare( $sql );
+            $statementHandler->execute();
+            $result = $statementHandler->fetchAll( PDO::FETCH_ASSOC );
+        } catch( PDOException $e ) {
+            echo $sql . '<br>' . $e->getMessage();
+        }
+
+        $this->handler = null;
+
+        return $result;
+    }
 
 }
