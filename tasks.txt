@@ -1,6 +1,6 @@
 -----------------Currently doing:-----
-Make two views: Russian and English 13:30 - 
-
+Make two views: Russian and English 30 min
+Create tables 12:00 -
 
 -----------------To do:---------------
 
@@ -22,6 +22,7 @@ Understand entities 1 h
 
 * a chapter
 - id
+- title
 - book_id
 -> has one page
 -> has one book
@@ -29,9 +30,7 @@ Understand entities 1 h
 * a page
 - id
 - content
-- book_id
 - chapter_id
--> has one book
 -> has one chapter
 
 

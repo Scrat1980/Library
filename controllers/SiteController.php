@@ -10,6 +10,12 @@ class SiteController
 {
     public function index()
     {
-        echo 11;
+        $params = [];
+        $model = new Book();
+
+        $params['books'] = $model->getBooksList();
+
+        $view = new BooksListView();
+        $view->render( $params );
     }
 }
