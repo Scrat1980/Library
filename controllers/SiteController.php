@@ -12,8 +12,11 @@ class SiteController
     {
         $params = [];
         $model = new Library();
+        
+        $commonView = new View();
+        $language = $commonView->language;
 
-        $params['books'] = $model->getBooksList();
+        $params['books'] = $model->getBooksList( $language );
 
         $view = new BooksListView();
 

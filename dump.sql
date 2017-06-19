@@ -26,6 +26,7 @@ CREATE TABLE `book` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `author` varchar(50) DEFAULT NULL,
+  `language` varchar(3) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,7 +37,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (5,'Ваш беспокойный подросток','Роберт Т.Байярд, Джин Байярд'),(6,'Семья глазами ребенка','Г.Т.Хоментаускас'),(7,'Мы и наша семья','В.Зацепин, В.Цимбалюк'),(8,'Inhabitant of the State','Andrey Platonov');
+INSERT INTO `book` VALUES (5,'Ваш беспокойный подросток','Роберт Т.Байярд, Джин Байярд','RUS'),(6,'Семья глазами ребенка','Г.Т.Хоментаускас','RUS'),(7,'Мы и наша семья','В.Зацепин, В.Цимбалюк','RUS'),(8,'Inhabitant of the State','Andrey Platonov','ENG');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,4 +130,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-20  0:34:33
+-- Dump completed on 2017-06-20  1:16:22

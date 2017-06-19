@@ -26,6 +26,8 @@ class View
         echo " <script src='/js/jquery-3.2.1.min.js'></script>";
         echo " <script src='/js/main.js'></script>";
 
+        echo "{$this->translate( $this->language, 'Select language' )}" . "<br>";
+
         $russianId = self::RUSSIAN;
         $englishId = self::ENGLISH;
 

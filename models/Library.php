@@ -15,10 +15,11 @@ class Library
         $this->dbHandler = new Db();
     }
     
-    public function getBooksList()
+    public function getBooksList( $selectedLanguage )
     {
-        $query = "SELECT title, author, id 
+        $query = "SELECT title, author, id
                     FROM book 
+                    WHERE language = '$selectedLanguage'
                     ORDER BY title ASC";
 
         return $list = $this->dbHandler->makeQuery( $query );
