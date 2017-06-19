@@ -8,12 +8,14 @@
 
 class SiteController
 {
-    public function index()
+    public function index( $config = null )
     {
+
         $params = [];
         $model = new Library();
 
         $params['books'] = $model->getBooksList();
+        $params['language'] = $config['language'];
 
         $view = new BooksListView();
         $view->render( $params );
@@ -28,7 +30,8 @@ class SiteController
         
         $params['chapters'] = $model->getChapters( $bookId );
         $params['bookName'] = $model->getBookNameById( $bookId );
-        
+        $params['language'] = $config['language'];
+
         $view = new ChapterView();
         $view->render( $params );
     }
@@ -42,12 +45,13 @@ class SiteController
         $bookId = $model->getBookIdByChapterId( $chapterId );
 
         $params['bookId'] = $bookId;
-
         $params['pages'] = $model->getPages( $chapterId );
+        $params['language'] = $config['language'];
 
         $view = new PagesView();
         $view->render( $params );
-        
+                $params['language'] = $config['language'];
+
     }
 
     public function page( $config = null )
@@ -64,6 +68,8 @@ class SiteController
         $page = $model->getPageContent( $pageId )[0]['content'];
 
         $params['page'] = $page;
+        $params['language'] = $config['language'];
+
         $view = new PageView();
         $view->render( $params );
     }

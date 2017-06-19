@@ -6,6 +6,8 @@
  * Time: 13:37
  */
 
+spl_autoload_register( 'myAutoloader' );
+
 $controller = getInput('controller');
 $action = getInput('action');
 
@@ -19,7 +21,9 @@ if( is_null( $action ) ) {
     $action = 'index';
 }
 
-spl_autoload_register( 'myAutoloader' );
+if( is_null( $params['language'] ) ) {
+    $params['language'] = View::RUSSIAN;
+}
 
 $c = new $controller();
 $c->{$action}( $params );
@@ -31,7 +35,10 @@ function getRoutParams()
     $params = [];
 
     foreach ($_GET as $inputParamKey => $inputParamValue) {
-        if ($inputParamKey === 'controller' || $inputParamKey === 'action') {
+        if (
+            $inputParamKey === 'controller'
+            || $inputParamKey === 'action'
+        ) {
             continue;
         }
         $params[$inputParamKey] = $inputParamValue;

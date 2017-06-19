@@ -10,6 +10,8 @@ class PageView extends View
 {
     public function render( $params = null )
     {
+        $this->commonView( $params );
+
         echo '<a href="/index.php">К списку книг</a>' . '<br>';
 
         $bookId = $params['bookId'];

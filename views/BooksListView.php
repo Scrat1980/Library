@@ -11,9 +11,11 @@ class BooksListView extends View
 {
     public function render( $params = null )
     {
+        $this->commonView( $params );
 
+        $language = $params['language'];
         if( count( $params['books'] ) > 0  ) {
-            echo "Список книг:" . '<br>' . '<br>';
+            echo $this->translate( $language, 'Books list' ) . ":" . '<br>' . '<br>';
 
             foreach ($params['books'] as $bookName) {
                 $bookUrlParameters = [
@@ -29,7 +31,7 @@ class BooksListView extends View
                 echo '<br>';
             }
         } else {
-            echo 'Список книг пуст';
+            echo $this->translate( $language, 'Books list empty' );
         }
     }
 
