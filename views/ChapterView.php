@@ -13,6 +13,7 @@ class ChapterView extends View
     {
 
         echo '<a href="/index.php">К списку книг</a>' . '<br>';
+        echo $params['bookName'] . '<br>';
 
         if( count( $params['chapters'] ) > 0 ) {
             

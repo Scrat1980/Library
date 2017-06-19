@@ -27,7 +27,7 @@ class SiteController
         $model = new Library();
         
         $params['chapters'] = $model->getChapters( $bookId );
-//        $params['bookName'] = $model->getBookNameById( $bookId );
+        $params['bookName'] = $model->getBookNameById( $bookId );
         
         $view = new ChapterView();
         $view->render( $params );
@@ -36,11 +36,15 @@ class SiteController
     public function pages( $config = null )
     {
         $chapterId = $config['chapterId'];
-        
+
         $params = [];
         $model = new Library();
-        
+        $bookId = $model->getBookIdByChapterId( $chapterId );
+
+        $params['bookId'] = $bookId;
+
         $params['pages'] = $model->getPages( $chapterId );
+
         $view = new PagesView();
         $view->render( $params );
         
@@ -51,12 +55,15 @@ class SiteController
         $pageId = $config['pageId'];
 
         $model = new Library();
+        $bookId = $model->getBookIdByPageId( $pageId );
+        $params['bookId'] = $bookId;
+
+        $chapterId = $model->getChapterIdByPageId( $pageId );
+        $params['chapterId'] = $chapterId;
 
         $page = $model->getPageContent( $pageId )[0]['content'];
 
-//        var_dump( $page );
-
-        $params['page'] = /*htmlentities( $page )*/$page;
+        $params['page'] = $page;
         $view = new PageView();
         $view->render( $params );
     }

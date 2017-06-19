@@ -11,7 +11,8 @@ class PagesView extends View
     public function render( $params = null )
     {
         echo '<a href="/index.php">К списку книг</a>' . '<br>';
-        echo '<a href="">К списку глав</a>' . '<br>';
+        $bookId = $params['bookId'];
+        echo "<a href=\"/index.php?action=chapters&bookId=$bookId\">К списку глав</a>" . '<br>';
 
         if( count( $params['pages'] ) > 0  ) {
             echo "Список страниц:" . '<br>' . '<br>';

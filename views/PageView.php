@@ -11,9 +11,13 @@ class PageView extends View
     public function render( $params = null )
     {
         echo '<a href="/index.php">К списку книг</a>' . '<br>';
-        echo '<a href="">К списку глав</a>' . '<br>';
-        echo '<a href="">К списку страниц</a>' . '<br>';
-//var_dump( $params['page'] );
+
+        $bookId = $params['bookId'];
+        echo "<a href=\"/index.php?action=chapters&bookId=$bookId\">К списку глав</a>" . '<br>';
+
+        $chapterId = $params['chapterId'];
+        echo "<a href=\"/index.php?action=pages&chapterId=$chapterId\">К списку страниц</a>" . '<br>';
+
         echo $params['page'];
     }
 
