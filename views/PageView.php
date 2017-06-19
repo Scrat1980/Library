@@ -12,13 +12,13 @@ class PageView extends View
     {
         $this->commonView( $params );
 
-        echo '<a href="/index.php">К списку книг</a>' . '<br>';
+        echo "<a href=\"/index.php\">{$this->translate( $this->language, 'To books list' )}</a>" . '<br>';
 
         $bookId = $params['bookId'];
-        echo "<a href=\"/index.php?action=chapters&bookId=$bookId\">К списку глав</a>" . '<br>';
+        echo "<a href=\"/index.php?action=chapters&bookId=$bookId\">{$this->translate( $this->language, 'To chapters list' )}</a>" . '<br>';
 
         $chapterId = $params['chapterId'];
-        echo "<a href=\"/index.php?action=pages&chapterId=$chapterId\">К списку страниц</a>" . '<br>';
+        echo "<a href=\"/index.php?action=pages&chapterId=$chapterId\">{$this->translate( $this->language, 'To pages list' )}</a>" . '<br>';
 
         echo $params['page'];
     }

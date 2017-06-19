@@ -68,4 +68,15 @@ class SiteController
         $view = new PageView();
         $view->render( $params );
     }
+
+    public function setLanguage( $params )
+    {
+//        var_dump( $language );
+//        die;
+
+        $model = new Language();
+        $model->setLanguage( $params['language'] );
+
+        header("Refresh:0");
+    }
 }

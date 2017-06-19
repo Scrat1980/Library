@@ -47,4 +47,15 @@ class Db
         return $result;
     }
 
+    public function update( $sql )
+    {
+        try {
+            $this->handler->exec( $sql );
+        } catch( PDOException $e ) {
+            echo $sql . "<br>" . $e->getMessage();
+        }
+        
+
+    }
+
 }

@@ -15,46 +15,23 @@ class View
 
     public $language;
 
-    protected function commonView( $params = null )
+    public function __construct()
     {
-        if( isset( $params['language'] ) ) {
-            $language = $params['language'];
-            $this->language = $language;
-        } else {
-            $language = $this->language = self::RUSSIAN;
-        }
+        $model = new Language();
+        $this->language = $model->getLanguage();
+    }
 
-        echo $this->translate( $language, "Select language" ) . '<br>';
+    protected function commonView()
+    {
+        echo " <script src='/js/jquery-3.2.1.min.js'></script>";
+        echo " <script src='/js/main.js'></script>";
 
-        $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $languagePresentInUrl = (bool) strstr( $currentUrl, 'language' );
-        if( $languagePresentInUrl ) {
-            $numberOfLanguageInUrl = (int) stripos( $currentUrl, 'language' );
-            $currentUrl = substr_replace( $currentUrl, '', $numberOfLanguageInUrl, 12 );
-            $lastLetterNumber = strlen($currentUrl);
-            $currentUrl = substr_replace( $currentUrl, '', $lastLetterNumber, 1 );
+        $russianId = self::RUSSIAN;
+        $englishId = self::ENGLISH;
 
-            $linkToRussian = $currentUrl . "language=RUS";
-            $linkToEnglish = $currentUrl . "language=ENG";
-        } else {
-            $urlHasParameters = (bool) strstr( $currentUrl, '?' );
-            $urlHasIndex = (bool) strstr( $currentUrl, 'index.php' );
-            if( $urlHasParameters ) {
-                $firstSymbol = '&';
-            } else if( $urlHasIndex ) {
-                $firstSymbol = '?';
-            } else {
-                $firstSymbol = 'index.php?';
-            }
-            $linkToRussian = $currentUrl . $firstSymbol . "language=RUS";
-            $linkToEnglish = $currentUrl . $firstSymbol . "language=ENG";
-
-        }
-
-
-        echo "<a href=\"$linkToRussian\">Russian</a>";
+        echo "<a href=\"\" id=\"$russianId\" class='language'>Russian</a>";
         echo ' ';
-        echo "<a href=\"$linkToEnglish\">English</a>";
+        echo "<a href=\"\" id=\"$englishId\" class='language'>English</a>";
         echo '<br><br>';
 
     }
@@ -95,6 +72,7 @@ class View
                 'Select language' => 'Выберите язык',
                 'To books list' => 'К списку книг',
                 'To chapters list' => 'К списку глав',
+                'To pages list' => 'К списку страниц',
             ],
             self::ENGLISH => [
                 'Books list' => 'Books list',
@@ -106,9 +84,14 @@ class View
                 'Select language' => 'Select language',
                 'To books list' => 'To books list',
                 'To chapters list' => 'To chapters list',
+                'To pages list' => 'To pages list',
             ],
         ];
         
-        return $translate[$language][$phrase];
+        $translation = isset( $translate[$language][$phrase] ) 
+            ? $translate[$language][$phrase]
+            : 'Failed to translate';
+        
+        return $translation;
     }
 }
