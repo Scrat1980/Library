@@ -12,14 +12,12 @@ class PagesView extends View
     {
         $this->commonView( $params );
 
-        $language = $params['language'];
-
-        echo "<a href=\"/index.php\">$this->translate( $language, 'To books list' )</a>" . '<br>';
+        echo "<a href=\"/index.php\">{$this->translate( $this->language, 'To books list' )}</a>" . '<br>';
         $bookId = $params['bookId'];
-        echo "<a href=\"/index.php?action=chapters&bookId=$bookId\">К списку глав</a>" . '<br>';
+        echo "<a href=\"/index.php?action=chapters&bookId=$bookId\">{$this->translate( $this->language, 'To chapters list' )}</a>" . '<br>';
 
         if( count( $params['pages'] ) > 0  ) {
-            echo $this->translate( $language, 'Pages list' ) . ":" . '<br>' . '<br>';
+            echo $this->translate( $this->language, 'Pages list' ) . ":" . '<br>' . '<br>';
 
             foreach ($params['pages'] as $page) {
                 echo '<a href="/index.php?action=page&pageId=' . $page['id'] . '">'
@@ -28,7 +26,7 @@ class PagesView extends View
                 echo ' ';
             }
         } else {
-            echo $this->translate( $language, 'Pages list empty' );
+            echo $this->translate( $this->language, 'Pages list empty' );
         }
     }
 

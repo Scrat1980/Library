@@ -13,9 +13,16 @@ class View
 
     const ENTRY_POINT_URL = '/index.php?';
 
+    public $language;
+
     protected function commonView( $params = null )
     {
-        $language = $params['language'];
+        if( isset( $params['language'] ) ) {
+            $language = $params['language'];
+            $this->language = $language;
+        } else {
+            $language = $this->language = self::RUSSIAN;
+        }
 
         echo $this->translate( $language, "Select language" ) . '<br>';
 
@@ -31,7 +38,14 @@ class View
             $linkToEnglish = $currentUrl . "language=ENG";
         } else {
             $urlHasParameters = (bool) strstr( $currentUrl, '?' );
-            $firstSymbol = $urlHasParameters ? '&' : 'index.php?';
+            $urlHasIndex = (bool) strstr( $currentUrl, 'index.php' );
+            if( $urlHasParameters ) {
+                $firstSymbol = '&';
+            } else if( $urlHasIndex ) {
+                $firstSymbol = '?';
+            } else {
+                $firstSymbol = 'index.php?';
+            }
             $linkToRussian = $currentUrl . $firstSymbol . "language=RUS";
             $linkToEnglish = $currentUrl . $firstSymbol . "language=ENG";
 
@@ -80,6 +94,7 @@ class View
                 'Pages list empty' => 'Список страниц пуст',
                 'Select language' => 'Выберите язык',
                 'To books list' => 'К списку книг',
+                'To chapters list' => 'К списку глав',
             ],
             self::ENGLISH => [
                 'Books list' => 'Books list',
@@ -90,6 +105,7 @@ class View
                 'Pages list empty' => 'Pages list empty',
                 'Select language' => 'Select language',
                 'To books list' => 'To books list',
+                'To chapters list' => 'To chapters list',
             ],
         ];
         
