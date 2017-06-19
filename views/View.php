@@ -20,18 +20,23 @@ class View
         echo $this->translate( $language, "Select language" ) . '<br>';
 
         $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        $urlHasParameters = (bool) strstr( $currentUrl, '?' );
         $languagePresentInUrl = (bool) strstr( $currentUrl, 'language' );
         if( $languagePresentInUrl ) {
             $numberOfLanguageInUrl = (int) stripos( $currentUrl, 'language' );
             $currentUrl = substr_replace( $currentUrl, '', $numberOfLanguageInUrl, 12 );
             $lastLetterNumber = strlen($currentUrl);
-            $currentUrl = substr_replace( $currentUrl, '', $lastLetterNumber - 1, 1 );
+            $currentUrl = substr_replace( $currentUrl, '', $lastLetterNumber, 1 );
+
+            $linkToRussian = $currentUrl . "language=RUS";
+            $linkToEnglish = $currentUrl . "language=ENG";
+        } else {
+            $urlHasParameters = (bool) strstr( $currentUrl, '?' );
+            $firstSymbol = $urlHasParameters ? '&' : 'index.php?';
+            $linkToRussian = $currentUrl . $firstSymbol . "language=RUS";
+            $linkToEnglish = $currentUrl . $firstSymbol . "language=ENG";
+
         }
 
-        $firstSymbol = $urlHasParameters ? '&' : 'index.php?';
-        $linkToRussian = $currentUrl . $firstSymbol . "language=RUS";
-        $linkToEnglish = $currentUrl . $firstSymbol . "language=ENG";
 
         echo "<a href=\"$linkToRussian\">Russian</a>";
         echo ' ';
@@ -74,6 +79,7 @@ class View
                 'Pages list' => 'Страницы',
                 'Pages list empty' => 'Список страниц пуст',
                 'Select language' => 'Выберите язык',
+                'To books list' => 'К списку книг',
             ],
             self::ENGLISH => [
                 'Books list' => 'Books list',
@@ -83,6 +89,7 @@ class View
                 'Pages list' => 'Pages list',
                 'Pages list empty' => 'Pages list empty',
                 'Select language' => 'Select language',
+                'To books list' => 'To books list',
             ],
         ];
         

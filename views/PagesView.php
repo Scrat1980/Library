@@ -14,7 +14,7 @@ class PagesView extends View
 
         $language = $params['language'];
 
-        echo '<a href="/index.php">К списку книг</a>' . '<br>';
+        echo "<a href=\"/index.php\">$this->translate( $language, 'To books list' )</a>" . '<br>';
         $bookId = $params['bookId'];
         echo "<a href=\"/index.php?action=chapters&bookId=$bookId\">К списку глав</a>" . '<br>';
 
