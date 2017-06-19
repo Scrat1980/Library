@@ -9,22 +9,36 @@
 $controller = getInput('controller');
 $action = getInput('action');
 
-$allSet =
-    ( ! is_null( $controller ) )
-    && ( ! is_null( $action ) );
+$params = getRoutParams();
 
-if( ! $allSet ) {
+if( is_null( $controller ) ) {
     $controller = 'SiteController';
+}
+
+if( is_null( $action ) ) {
     $action = 'index';
 }
 
 spl_autoload_register( 'myAutoloader' );
 
 $c = new $controller();
-$c->{$action}();
+$c->{$action}( $params );
 
 
 
+function getRoutParams()
+{
+    $params = [];
+
+    foreach ($_GET as $inputParamKey => $inputParamValue) {
+        if ($inputParamKey === 'controller' || $inputParamKey === 'action') {
+            continue;
+        }
+        $params[$inputParamKey] = $inputParamValue;
+    }
+
+    return $params;
+}
 
 function getInput( $attribute ) {
     $result = ( isset( $_GET[$attribute] ) )
