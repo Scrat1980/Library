@@ -70,30 +70,6 @@ INSERT INTO `chapter` VALUES (1,1,'ЛЮБОВЬ ТОРЖЕСТВУЕТ НАД В
 UNLOCK TABLES;
 
 --
--- Table structure for table `lang`
---
-
-DROP TABLE IF EXISTS `lang`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `lang` (
-  `id` int(1) NOT NULL AUTO_INCREMENT,
-  `language` varchar(3) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `lang`
---
-
-LOCK TABLES `lang` WRITE;
-/*!40000 ALTER TABLE `lang` DISABLE KEYS */;
-INSERT INTO `lang` VALUES (1,'ENG');
-/*!40000 ALTER TABLE `lang` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `page`
 --
 
@@ -130,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-20  1:16:22
+-- Dump completed on 2017-06-20 23:39:52
