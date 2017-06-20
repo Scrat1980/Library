@@ -5,6 +5,7 @@
  * Date: 15.06.17
  * Time: 13:37
  */
+session_start();
 
 spl_autoload_register( 'myAutoloader' );
 

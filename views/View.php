@@ -17,8 +17,7 @@ class View
 
     public function __construct()
     {
-        $model = new Language();
-        $this->language = $model->getLanguage();
+        $this->language = $_SESSION['language'];
     }
 
     protected function commonView()
@@ -31,9 +30,10 @@ class View
         $russianId = self::RUSSIAN;
         $englishId = self::ENGLISH;
 
-        echo "<a href=\"\" id=\"$russianId\" class='language'>Russian</a>";
+        echo
+            "<a href=\"\" id=\"$russianId\" class='language'>{$this->translate( $this->language, 'Russian' )}</a>";
         echo ' ';
-        echo "<a href=\"\" id=\"$englishId\" class='language'>English</a>";
+        echo "<a href=\"\" id=\"$englishId\" class='language'>{$this->translate( $this->language, 'English' )}</a>";
         echo '<br><br>';
 
     }
@@ -75,6 +75,8 @@ class View
                 'To books list' => 'К списку книг',
                 'To chapters list' => 'К списку глав',
                 'To pages list' => 'К списку страниц',
+                'Russian' => 'русский',
+                'English' => 'английский',
             ],
             self::ENGLISH => [
                 'Books list' => 'Books list',
@@ -87,6 +89,8 @@ class View
                 'To books list' => 'To books list',
                 'To chapters list' => 'To chapters list',
                 'To pages list' => 'To pages list',
+                'Russian' => 'Russian',
+                'English' => 'English',
             ],
         ];
         
