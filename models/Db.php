@@ -8,15 +8,21 @@
  */
 class Db
 {
-    private $host = 'localhost';
-    private $userName = 'root';
-    private $password = '1';
-    private $dbName = 'library';
+    private $host;
+    private $userName;
+    private $password;
+    private $dbName;
     private $handler;
-
 
     public function __construct()
     {
+        $db = require ('config/db.php');
+        
+        $this->host = $db['host'];
+        $this->userName = $db['userName'];
+        $this->password = $db['password'];
+        $this->dbName = $db['dbName'];
+
         try {
             $dbHandler = new PDO(
                 "mysql:host=$this->host;dbname=$this->dbName",
