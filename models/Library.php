@@ -102,4 +102,9 @@ class Library
         return $chapterId;
 
     }
+
+    public function closeConnection()
+    {
+        $this->dbHandler = null;
+    }
 }

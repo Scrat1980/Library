@@ -48,8 +48,6 @@ class Db
             echo $sql . '<br>' . $e->getMessage();
         }
 
-//        $this->handler = null;
-
         return $result;
     }
     

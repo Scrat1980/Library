@@ -17,6 +17,7 @@ class SiteController
         $language = $commonView->language;
 
         $params['books'] = $model->getBooksList( $language );
+        $model->closeConnection();
 
         $view = new BooksListView();
 
@@ -32,6 +33,7 @@ class SiteController
         
         $params['chapters'] = $model->getChapters( $bookId );
         $params['bookName'] = $model->getBookNameById( $bookId );
+        $model->closeConnection();
 
         $view = new ChapterView();
         $view->render( $params );
@@ -47,6 +49,7 @@ class SiteController
 
         $params['bookId'] = $bookId;
         $params['pages'] = $model->getPages( $chapterId );
+        $model->closeConnection();
 
         $view = new PagesView();
         $view->render( $params );
@@ -65,6 +68,7 @@ class SiteController
         $params['chapterId'] = $chapterId;
 
         $page = $model->getPageContent( $pageId )[0]['content'];
+        $model->closeConnection();
 
         $params['page'] = $page;
 
